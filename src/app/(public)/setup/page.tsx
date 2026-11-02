@@ -56,7 +56,7 @@ export default async function SetupGuidePage() {
             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#eaf3ef] text-sm font-semibold text-[#39765e]">AI</span>
             <div><p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#8a98aa]">CHATGPT</p><h2 className="text-xl font-semibold text-[#293f5c]">Connect ChatGPT</h2></div>
           </div>
-          <p className="mt-3 text-sm leading-6 text-[#64758c]">For the full MeritDesk experience—including creating client and matter records and running skills—use ChatGPT Business, Enterprise or Edu. ChatGPT Pro currently supports custom MCP connections with read/fetch permissions only, so it can access the legal library but not the write actions.</p>
+          <p className="mt-3 text-sm leading-6 text-[#64758c]">For the full MeritDesk experience—including creating client and matter records and running skills—use ChatGPT Business, Enterprise or Edu. ChatGPT Pro currently supports custom MCP connections with read/fetch permissions only. It may use read-only matter tools when your firm and client connection allow them, but it cannot create records, queue skills or issue document download links.</p>
           <ol className={stepClass}>
             <li>Open ChatGPT on the web and go to <strong>Plugins</strong>.</li>
             <li>Select the <strong>+</strong> button, then choose <strong>Add custom MCP server</strong>.</li>
