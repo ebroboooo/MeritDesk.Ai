@@ -2,7 +2,6 @@ import { z } from "zod";
 import { safeErrorMessage } from "@/lib/errors/safe-error";
 import { MATTER_STATUSES } from "@/lib/matters/details";
 import { matterPartyRoleEnum } from "@/db/schema";
-import { MATTER_CASE_TYPES } from "@/lib/matters/case-types";
 import { newMatterInputSchema } from "@/lib/matters/details-schema";
 import { caseTypeLabel } from "@/lib/matters/case-types";
 import { EDITOR_ROLES } from "@/lib/roles";
@@ -130,7 +129,7 @@ const createMatterTool = defineConnectorTool({
   availableTo: (ctx) => EDITOR_ROLES.includes(ctx.identity.role),
   freshIdentity: true,
   async run(q, ctx) {
-    const { confirm: _confirm, ...values } = q;
+    const values = { caseType: q.caseType, venue: q.venue, circuit: q.circuit, court: q.court, ntaDate: q.ntaDate, oneYearClockDate: q.oneYearClockDate, nextHearingDate: q.nextHearingDate };
     const call = callContext(ctx, "create_matter");
     try {
       const created = await ctx.deps.caseWork.createMatter(call, values);
