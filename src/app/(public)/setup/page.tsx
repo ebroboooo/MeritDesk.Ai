@@ -83,13 +83,13 @@ export default async function SetupGuidePage() {
           </div>
           <div className="mt-5 border-t border-[#e9edf2] pt-5">
             <h3 className="text-sm font-semibold text-[#304967]">If you only see legal-library tools</h3>
-            <p className="mt-1 text-sm leading-6 text-[#748399]">Your firm's owner may still need to enable case-work access after reviewing the disclosure. MeritDesk also makes case-work tools available only to recognized AI clients. Ask your firm's owner to check the Firm & Permissions page if the tools do not appear.</p>
+            <p className="mt-1 text-sm leading-6 text-[#748399]">Your firm&apos;s owner may still need to enable case-work access after reviewing the disclosure. MeritDesk also makes case-work tools available only to recognized AI clients. Ask your firm&apos;s owner to check the Firm & Permissions page if the tools do not appear.</p>
           </div>
         </section>
 
         <section className="rounded-2xl border border-[#e4eaf1] bg-white p-6 sm:p-7">
           <h2 className="text-lg font-semibold text-[#293f5e]">A note about documents and client privacy</h2>
-          <p className="mt-2 text-sm leading-7 text-[#748399]">Create clients and matters from the assistant when case-work access is enabled. Upload original files through the secure MeritDesk matter portal; files are malware-scanned and processed before they can be used by eligible skills. When case-work tools are enabled, any client or matter information returned to the assistant becomes part of that AI provider's conversation and is subject to that provider's terms. Review your firm's disclosure before using real client data.</p>
+          <p className="mt-2 text-sm leading-7 text-[#748399]">Create clients and matters from the assistant when case-work access is enabled. Upload original files through the secure MeritDesk matter portal; files are malware-scanned and processed before they can be used by eligible skills. When case-work tools are enabled, any client or matter information returned to the assistant becomes part of that AI provider&apos;s conversation and is subject to that provider's terms. Review your firm&apos;s disclosure before using real client data.</p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Link href="/sign-up" className="inline-flex items-center rounded-xl bg-[#17345f] px-5 py-3 text-sm font-semibold text-white hover:bg-[#244779]">Start your free month →</Link>
             <Link href="/pricing" className="inline-flex items-center rounded-xl border border-[#d8e0eb] px-5 py-3 text-sm font-semibold text-[#344966] hover:bg-[#f7f9fc]">View pricing</Link>
