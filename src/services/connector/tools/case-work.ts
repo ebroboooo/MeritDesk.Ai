@@ -3,7 +3,7 @@ import { safeErrorMessage } from "@/lib/errors/safe-error";
 import { MATTER_STATUSES } from "@/lib/matters/details";
 import { matterPartyRoleEnum } from "@/db/schema";
 import { newMatterInputSchema } from "@/lib/matters/details-schema";
-import { caseTypeLabel } from "@/lib/matters/case-types";
+import { caseTypeLabel, MATTER_CASE_TYPES } from "@/lib/matters/case-types";
 import { EDITOR_ROLES } from "@/lib/roles";
 import { MAX_ATTORNEY_NOTE_CHARS } from "@/lib/skill-runs/snapshot";
 import { DOWNLOAD_URL_EXPIRES_SECONDS } from "@/lib/s3";
@@ -120,7 +120,7 @@ const createMatterTool = defineConnectorTool({
   name: "create_matter",
   title: "Create an immigration matter",
   description:
-    "Creates a matter using the same case-type and venue choices as the MeritDesk matter form. It does not automatically attach a client; use add_matter_party after creating or finding the client. Requires confirm: true after the user reviews the case type and dates. Available to owner/admin, attorney and paralegal roles; audited.",
+    "Creates a matter using the same case-type and venue choices as the MeritDesk matter form. caseType must be one of: " + MATTER_CASE_TYPES.map(([key, label]) => key + " (" + label + ")").join("; ") + ". It does not automatically attach a client; use add_matter_party after creating or finding the client. Requires confirm: true after the user reviews the case type and dates. Available to owner/admin, attorney and paralegal roles; audited.",
   group: "case_work",
   inputSchema: newMatterInputSchema.extend({
     confirm: z.literal(true).describe("The user has confirmed this exact matter should be created."),
