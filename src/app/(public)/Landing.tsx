@@ -153,7 +153,7 @@ export function Landing() {
           <div className="mt-10 divide-y divide-[#e9edf2]">
             {[
               ["Is MeritDesk a separate legal case-management app?", "The main experience is your AI assistant. MeritDesk provides the connector, official-source library and firm-controlled case-work tools. The website is used for account, firm, connector and billing setup."],
-              ["Does it work with Claude and ChatGPT?", "Yes. MeritDesk exposes a remote MCP connector. Add it as a custom connector/server in the assistant you use, then sign in with your MeritDesk account."],
+              ["Does it work with Claude and ChatGPT?", "Yes. Add MeritDesk as a custom remote MCP connector. Claude requires Pro, Max, Team or Enterprise. ChatGPT Business, Enterprise and Edu support full tool actions; ChatGPT Pro currently supports read/fetch tools only."],
               ["Can my assistant access client matters?", "Only when the firm owner enables case-work access, the connected AI client is recognized by the platform, the firm is entitled to use the service, and the member's role allows the requested tool."],
               ["Do client documents get sent to the AI provider?", "When an enabled tool returns matter information or a skill report, that information becomes part of the AI conversation. Document contents are not automatically returned by the document-list tools. Review the disclosure and provider terms before use."],
               ["What happens when a skill is run?", "A confirmed skill run is queued and processed in the background. It can read eligible matter documents and the firm's practice context, and may create documents or reports. It uses the firm's model budget."],
