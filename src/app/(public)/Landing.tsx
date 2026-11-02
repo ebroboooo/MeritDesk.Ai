@@ -94,7 +94,7 @@ export function Landing() {
             <p className="mt-7 max-w-xl text-base leading-8 text-[#65748a] sm:text-lg">Research official immigration-law sources, bring your firm&apos;s matter context into the conversation, and run purpose-built legal skills—all through one secure MeritDesk connector.</p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link href="/sign-up" className="group inline-flex items-center gap-3 rounded-xl bg-[#17345f] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_12px_25px_-12px_rgba(23,52,95,.65)] transition hover:-translate-y-0.5 hover:bg-[#214779]">Start your 30-day free trial <Arrow /></Link>
-              <Link href="/#how-it-works" className="inline-flex items-center gap-2 rounded-xl border border-[#d8e0eb] bg-white px-6 py-3.5 text-sm font-semibold text-[#344966] transition hover:border-[#aebed4] hover:bg-[#f7f9fc]">See how to connect <Arrow diagonal /></Link>
+              <Link href="/setup" className="inline-flex items-center gap-2 rounded-xl border border-[#d8e0eb] bg-white px-6 py-3.5 text-sm font-semibold text-[#344966] transition hover:border-[#aebed4] hover:bg-[#f7f9fc]">See how to connect <Arrow diagonal /></Link>
             </div>
             <p className="mt-4 text-xs font-medium tracking-wide text-[#8996a8]">No credit card for the first 30 days. $20 per user/month after trial.</p>
             <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-[#e7ebf1] pt-6">
