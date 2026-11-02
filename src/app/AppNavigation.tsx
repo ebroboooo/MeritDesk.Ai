@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 type NavItem = { href: string; label: string; icon: string };
 
 const ITEMS: NavItem[] = [
+  { href: "/", label: "Overview", icon: "⌂" },
   { href: "/connect", label: "Connect assistant", icon: "⌘" },
   { href: "/firm", label: "Firm & permissions", icon: "⚙" },
   { href: "/practice-profile", label: "Practice profile", icon: "◎" },
@@ -31,7 +32,7 @@ export function AppNavigation({ variant }: { variant: "sidebar" | "mobile"; unre
 
   return (
     <aside className="hidden w-[248px] shrink-0 flex-col border-r border-[#e8edf4] bg-white px-4 py-6 md:flex">
-      <Link href="/connect" className="mb-9 flex items-center gap-3 px-2">
+      <Link href="/" className="mb-9 flex items-center gap-3 px-2">
         <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#18345b] text-lg font-bold text-white shadow-sm">M</span>
         <span className="leading-tight">
           <span className="block text-[15px] font-bold tracking-tight text-[#172b49]">MeritDesk<span className="text-[#4775bd]">.AI</span></span>
