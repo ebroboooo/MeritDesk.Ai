@@ -21,8 +21,8 @@ export function PublicShell({ children, signedIn }: { children: React.ReactNode;
             </div>
             <Link href="/pricing" className="text-sm font-medium text-[#697991] transition hover:text-[#1b3458] md:hidden">Pricing</Link>
             {signedIn ? (
-              <Link href="/" className={buttonClass}>
-                Open the app
+              <Link href="/connect" className={buttonClass}>
+                Connector setup
               </Link>
             ) : (
               <>
