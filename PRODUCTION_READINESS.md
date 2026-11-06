@@ -1,12 +1,12 @@
 # MeritDesk.AI Production Readiness
 
-Last updated: 2026-11-05
+Last updated: 2026-11-06
 
 This tracker records evidence gathered from the local checkout. A source-code inspection or project documentation claim is not treated as proof of a live integration. No production deployment, production database, or real payment operation has been performed.
 
 ## Repository and preservation
 
-- [x] Checkout identified: branch recover-marketing-redesign, tracking origin/recover-marketing-redesign and two commits ahead at inspection.
+- [x] Checkout identified: branch `recover-marketing-redesign`, HEAD `7086121` (`Complete connector and production readiness improvements`); local `origin/recover-marketing-redesign` tracking ref matches HEAD. No working-tree changes were present at the latest status check before this tracker update.
 - [x] Remote verified: https://github.com/ebroboooo/MeritDesk.Ai.git.
 - [x] Pre-existing working-tree edits preserved: src/services/connector/config.ts and src/services/connector/server.ts. The changes adjust the protected-resource metadata path and add tools/list diagnostics. They have not been overwritten or committed.
 - [x] Saved a reversible patch of all pre-existing tracked edits in the Windows temp directory before the workflow edit. The user-owned connector changes remain uncommitted and intact.
@@ -34,6 +34,8 @@ This tracker records evidence gathered from the local checkout. A source-code in
 - [x] Added migration `0017_tenant_scoped_relationships.sql` and updated the Drizzle schema/snapshot/journal with tenant-aware composite foreign keys for matter parties, documents, and skill runs. Constraints are `NOT VALID` so deployment preserves historical rows while all new writes are checked immediately; Drizzle migration integrity check passes and PGlite applies the complete chain. Existing rows still need a production preflight and later constraint validation.
 
 ## Validation results
+
+Latest status refresh (2026-11-06): `git status --short` was clean before this tracker update. The prior recorded validation run completed `npm test` (41 tests), `npm run typecheck`, `npm run lint`, `npm run build`, and `git diff --check` successfully. No build command is currently recorded as running; the last recorded production build exited 0. The live status of the GitHub remote was not queried, so push status is not independently verified.
 
 | Check | Result | Evidence / limit |
 | --- | --- | --- |
