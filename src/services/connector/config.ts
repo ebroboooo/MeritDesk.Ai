@@ -125,14 +125,18 @@ export const ORIGIN_VARY = "Host, X-Forwarded-Host, X-Forwarded-Proto";
  * connector answers 500. Outside production the request's forwarded host
  * and protocol, then its URL, are used (responses then say Vary).
  */
-export function resolveConnectorOrigin(headers: Pick<Headers, "get">, requestUrl?: string): { origin: string | null; fromRequest: boolean } {
+export function resolveConnectorOrigin(
+  headers: Pick<Headers, "get">,
+  requestUrl?: string,
+  production = process.env.NODE_ENV === "production"
+): { origin: string | null; fromRequest: boolean } {
   const configured = process.env.CONNECTOR_PUBLIC_ORIGIN?.trim();
   if (configured) {
     const origin = trimOrigin(configured);
     if (origin) return { origin, fromRequest: false };
     console.error("[connector] CONNECTOR_PUBLIC_ORIGIN is not an http(s) URL");
   }
-  if (process.env.NODE_ENV === "production") {
+  if (production) {
     if (!configured) console.error("[connector] CONNECTOR_PUBLIC_ORIGIN is not set; the connector refuses to answer until it is");
     return { origin: null, fromRequest: false };
   }
