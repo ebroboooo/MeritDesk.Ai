@@ -20,37 +20,29 @@ const activeToken = {
 };
 
 test("binds OAuth authentication to the exact configured MCP resource URL", () => {
-  const previousNodeEnv = process.env.NODE_ENV;
   const previousOrigin = process.env.CONNECTOR_PUBLIC_ORIGIN;
-  process.env.NODE_ENV = "production";
   process.env.CONNECTOR_PUBLIC_ORIGIN = "https://mcp.meritdesk.example";
   try {
     const request = new Request("https://attacker.example/api/mcp", {
       headers: { host: "attacker.example" },
     });
     assert.equal(
-      connectorAudienceForRequest(request),
+      connectorAudienceForRequest(request, true),
       "https://mcp.meritdesk.example/api/mcp"
     );
   } finally {
-    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
-    else process.env.NODE_ENV = previousNodeEnv;
     if (previousOrigin === undefined) delete process.env.CONNECTOR_PUBLIC_ORIGIN;
     else process.env.CONNECTOR_PUBLIC_ORIGIN = previousOrigin;
   }
 });
 
 test("refuses to derive a production OAuth audience from request headers", () => {
-  const previousNodeEnv = process.env.NODE_ENV;
   const previousOrigin = process.env.CONNECTOR_PUBLIC_ORIGIN;
-  process.env.NODE_ENV = "production";
   delete process.env.CONNECTOR_PUBLIC_ORIGIN;
   try {
     const request = new Request("https://attacker.example/api/mcp");
-    assert.equal(connectorAudienceForRequest(request), null);
+    assert.equal(connectorAudienceForRequest(request, true), null);
   } finally {
-    if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
-    else process.env.NODE_ENV = previousNodeEnv;
     if (previousOrigin === undefined) delete process.env.CONNECTOR_PUBLIC_ORIGIN;
     else process.env.CONNECTOR_PUBLIC_ORIGIN = previousOrigin;
   }
