@@ -163,8 +163,11 @@ export function connectorResourceUrl(origin: string): string {
 }
 
 /** Exact protected-resource audience expected for this incoming MCP request. */
-export function connectorAudienceForRequest(request: Request): string | null {
-  const { origin } = connectorOrigin(request);
+export function connectorAudienceForRequest(
+  request: Request,
+  production = process.env.NODE_ENV === "production"
+): string | null {
+  const { origin } = resolveConnectorOrigin(request.headers, request.url, production);
   return origin ? connectorResourceUrl(origin) : null;
 }
 
