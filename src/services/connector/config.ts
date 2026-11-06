@@ -25,10 +25,11 @@ export const DEFAULT_CONNECTOR_SCOPE = "practice:connector";
  * The custom Clerk scope every connector token must carry
  * (CONNECTOR_REQUIRED_SCOPE, default practice:connector). Clerk issues
  * OAuth tokens for every OAuth application of the instance; requiring a
- * scope that only the connector's clients are given keeps a token issued
- * for some other application of the same instance from working here (Clerk
- * has no audience for the MCP resource). It does not tell Claude from an
- * impostor client: the client allow list below does that.
+ * scope that only the connector's clients are given marks the grant as
+ * intended for this connector. This is an additional grant check, not a
+ * substitute for resource binding: clerk-auth.ts also passes the exact MCP
+ * resource URL to Clerk's authenticateRequest audience validation. It does
+ * not tell Claude from an impostor client: the client allow list below does that.
  */
 export function connectorRequiredScope(): string {
   const value = process.env.CONNECTOR_REQUIRED_SCOPE?.trim();
@@ -155,6 +156,12 @@ export function connectorOrigin(request: Request): { origin: string | null; from
 /** The MCP server URL: what a firm enters in Claude or ChatGPT, and the protected resource's identifier. */
 export function connectorResourceUrl(origin: string): string {
   return `${origin}${MCP_ENDPOINT_PATH}`;
+}
+
+/** Exact protected-resource audience expected for this incoming MCP request. */
+export function connectorAudienceForRequest(request: Request): string | null {
+  const { origin } = connectorOrigin(request);
+  return origin ? connectorResourceUrl(origin) : null;
 }
 
 /**
